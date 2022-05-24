@@ -34,24 +34,44 @@
     "use strict";
 
     // Здесь пишем решение, данный комментарий необходимо стереть.
+
+    /*
+     * Считает сумму.
+     * @param {number} a - Первое число.
+     * @param {number} b - Второе число.
+     * @return {number} Сумма чисел.
+    */
     function sum(a, b) {
       return a + b;
     }
 
+    /*
+     * Считает разницу переданных
+     * @param {number} a - Первое число.
+     * @param {number} b - Второе число.
+     * @return {number} Разница чисел.
+    */
     function diff(a, b) {
       if (a > b) {
         return a - b;
-      } else if (b > a) {
-        return b - a;
-      } else if (a == b) {
-        return +"0";
       }
-    }
+      return b - a;
 
+    }
+    /*
+     * Считает произведение.
+     * @param {number} a - Первое число.
+     * @param {number} b - Второе число.
+     * @return {number} Результат умножения.
+    */
     function multiply(a, b) {
       return a * b;
     }
-
+    /*
+     * @param {numder} a - Первое число.
+     * @param {number} b - Второе число.
+     * @retutn {number}  Результат деления.
+    */
     function divide(a, b) {
       return a / b;
     }
@@ -63,10 +83,6 @@
     console.log(difference(a, b));
     console.log(multiply(a, b));
     console.log(divide(a, b));
-    /*
-    Иучаю вопрос до конца. Хочу узнать как делать комментарии jsdoc 
-    https://jsdoc.app/.
-    */
 
   </script>
 </body>
