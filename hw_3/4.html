@@ -46,12 +46,12 @@
       },
     ];
 
-    const all_Photos = products.filter(function (picture) {
-      return 'photos' in picture && picture.photos.length > 0;
+    const all_Photos = products.filter(function (photo) {
+      return 'photos' in photo && photo.photos.length > 0;
     });
 
     /*Стрелочная функция
-    const all_Photos = products.filter(picture => 'photos' in picture && picture.photos.length > 0)
+    const all_Photos = products.filter(photo => 'photos' in photo && photo.photos.length > 0)
     
      Не мог ни как сам додуматься до второго условия in :( хотя живой пример 
     был в дополнительных видео. После нескольких часов попыток разобраться 
@@ -59,7 +59,7 @@
     Шире мыслить :) Опыт... 
     */
 
-    const price = products.sort(function (a, b) { //Почему можем не писать const
+    products.sort(function (a, b) {
       return a.price - b.price;
     });
     /*
@@ -69,7 +69,7 @@
     */
 
     console.log(all_Photos);
-    console.log(price);
+    console.log(products);
 
   </script>
 </body>

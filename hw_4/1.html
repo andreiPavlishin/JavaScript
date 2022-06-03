@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework_1</title>
+</head>
+
+<body>
+  <!--
+Обязательное задание.
+
+Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
+Необходимо создать функцию-конструктор/класс для продукта.
+Названия: `ProductES5` для es5 стиля, `ProductES6` для es6 стиля.
+При создании объекта от функции-конструктора/класса необходимо передавать имя
+и цену товара, эта информация должна быть сохранена в объекте.
+Также у объекта должна быть возможность выполнить метод `make25Discount`, данный
+метод должен уменьшать стоимость продукта на 25%.
+Необходимо продемонстрировать работу с объектом (в свободной форме).
+-->
+  <script>
+    "use strict";
+    function ProductES5(product) {
+      console.log(this.product = product);
+    }
+
+    ProductES5.prototype.make25Discount = function () {
+      console.log(`Яблоко стоит ${price * 0.75} рублей`);
+    };
+    /*
+    ProductES5.prototype.sale = discount => (console.log(`Яблоко стоит ${price * 0.25} рублей`));
+    Тоже работает но вылазеет за границы :(
+    */
+
+    const price = 100;
+    const name = new ProductES5(`Яблоко стоит ${price} рублей`);
+
+    name.make25Discount();
+
+    // V 2.0 (красивый пример)
+
+    function ProductES5v2(nameV2, priceV2) {
+      this.nameV2 = nameV2;
+      this.priceV2 = priceV2;
+    }
+
+    ProductES5v2.prototype.make25DiscountV2 = function () {
+      this.priceV2 *= 0.75;
+    };
+
+    const productES5v2 = new ProductES5v2('Яблоко', 100);
+    console.log(`${productES5v2.nameV2} стоит ${productES5v2.priceV2} рублей`);
+    productES5v2.make25DiscountV2();
+    console.log(`${productES5v2.nameV2} стоит ${productES5v2.priceV2} рублей`);
+
+    // После был приятно удевлён, что код повторяет Ваш.
+
+    // ------- ES6
+
+    class ProductES6 {
+      constructor(name, price) {
+        this.name = name;
+        this.price = price;
+      }
+      make25Discount() {
+        this.price *= 0.75;
+      }
+    }
+    const productES6 = new ProductES6('Яблоко', 100);
+    console.log(`${productES6.name} стоит ${productES6.price} рублей`);
+    productES6.make25Discount();
+    console.log(`${productES6.name} стоит ${productES6.price} рублей`);
+
+
+
+  </script>
+</body>
+
+</html>
