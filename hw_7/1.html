@@ -41,7 +41,8 @@
 
     <input type="range" min="20" max="100">
     <div id="inputDiv">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, expedita.
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat,
+      expedita.
     </div>
 
   </div>
@@ -75,39 +76,62 @@
       activeEl = e.target;
 
       textEl.textContent = panelText[e.target.parentElement.dataset.text];
-
     });
 
 
     /*
-    2. Необходимо сделать так, чтобы при изменении input'а менялся и размер шрифта
-    у элемента с id="inputDiv". Перемещение ползунка должно плавно увеличивать
-    шрифт у текста, никакого резкого увеличения шрифта не должно быть при
-    перетаскивании ползунка.
+    2. Необходимо сделать так, чтобы при изменении input'а менялся и размер 
+    шрифта у элемента с id="inputDiv". Перемещение ползунка должно плавно 
+    увеличивать шрифт у текста, никакого резкого увеличения шрифта не должно 
+    быть при перетаскивании ползунка.
      */
 
     /*
     Первые мысли
+    */
     const inputEl = document.querySelector("input");
     const texEl = document.querySelector("#inputDiv");
-    inputEl.addEventListener("change", function (event) {
-      texEl.style.fontSize = this.value + "px";
-    }); // почемуто не работает стрелочная функция?
-    */
+    inputEl.value = Number.parseInt(getComputedStyle(texEl).fontSize);
+    inputEl.addEventListener("input", event => {
+      texEl.style.fontSize = event.target.value + "px";
+    });
 
-    //Потом такая идея
-    const inputEl = document.querySelector('input'); // inputEl - это Input
-    const texEl = document.querySelector('#inputDiv'); //texEl  - блок test
+    /*
+    Потом такая идея
     inputEl.addEventListener('input', event => {
       texEl.style.fontSize = inputEl.value + 'px';
     });
+    /*
+    Почестному, я так и не смог додуматься как сделать так, чтобы при первом 
+    сдвиге ползунка шрифт переключался плавно. Мне предлагали использовать 
+    функцию tranform, и переименовывать классы.
+    Вообще я не ожидал, что программисты настолько агрессивны. Слово есть такое 
+    "Троллинг", так вот в чатах сложилось мнение, что сидят одни тролли.
+    Думаю, участники группы "ananimus" не ведут себя :) 
+    
+    Теперь о главном:
+    Я думаю, что необходимо чтобы texEl принимал значения местоположение inputEl
+    и на основе этого принимал необходимые значения. Но ка это написать на
+    машинном языке не понимаю (
+      
+    Или второй вариант самый простой — это установить inputEl и texEl на 
+    значение min тогда у них будут одинаковые параметры и текст будет 
+    переключаться плавною. Но это опасно тем, что если кто-то изменить 
+    изначальный fontSize то всё сломается.
+
+    В общем подсмотрел в решениях, итог:
+    1. Наставник прошедший данный курс - Не знает)
+    2. В чатах получил только негатив :(
+      Вот как "молодому" (начинающему) программисту развиваться, только ютюб и 
+      книги.
+   */
 
     /*
      Пририсваеваем размару шрифта texEl к длине ползунка и перибаляем рх (за 
      счет чего и увеличиваем размеры шрифта)
 
      Одновременно и радостно и грусно. Я только на 7 уроке понял, что делает
-     addEventListener - запускает выполнение какого либо действия.
+     addEventListener - запускает слушателя события.
     */
 
   </script>
